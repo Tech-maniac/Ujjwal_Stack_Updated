@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stack</title>
+</head>
+
+<body>
+  <h1>Implementation of Stack in JavaScript.</h1>
+  <div class="result"></div>
+  <br/>
+  <input type="text" class="stackPush" />
+  <button class="pushBtn">Push</button>
+  <button class="popBtn">Pop</button>
+  <h3>Click on the above buttons to perform stack operations</h3>
+
+  <script>
+
+    let resEle = document.querySelector(".result");
+    let BtnEle = document.querySelector(".Btn");
+    let pushBtnEle = document.querySelector(".pushBtn");
+    let popBtnEle = document.querySelector(".popBtn");
+    
+
+
+
+    let data = [];
+    let currentSize = data.length;
+    let max = 5;
+
+    //no need to pass parameter in push function, as we are simple calling the function & fetching the value of input box inside the function.
+    function push() 
+    {
+      //always fetch the value from the input box when the funtion is called
+      let newVal = document.querySelector(".stackPush").value;
+
+      if (currentSize >= max) {
+        alert("Stack is full you can not add" + newVal);
+      } else {
+        data[currentSize] = newVal;
+        console.log("Pushed value : "+data[currentSize]);
+        //displays the array on the console.
+        console.log(data);
+
+        //Shows the element pushed into the array on html page.
+        resEle.innerHTML = data[currentSize];
+        currentSize += 1;
+      }
+      console.log(data);
+    }
+
+    pushBtnEle.addEventListener('click', push);
+
+
+
+    function pop() {
+      if (currentSize > 0) {
+        currentSize -= 1;
+        data.length = currentSize;
+        resEle.innerHTML = data[currentSize];
+      }
+      else {
+        alert("stack is already empty");
+      }
+      console.log(data);
+    }
+
+    popBtnEle.addEventListener('click', pop);
+  </script>
+</body>
+
+</html>
